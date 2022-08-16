@@ -34,3 +34,4 @@ jobs:
           heroku_app_name: "pokedex-1992"
           heroku_email: ${{secrets.EMAIL}}
           healthcheck: `https://pokedex-1992.herokuapp.com/health`
+          checkstring: "ok"
