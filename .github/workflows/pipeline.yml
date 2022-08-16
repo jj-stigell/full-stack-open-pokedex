@@ -33,5 +33,6 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "pokedex-1992"
           heroku_email: ${{secrets.EMAIL}}
-          healthcheck: "https://pokedex-1992.herokuapp.com/health"
+          healthcheck: https://pokedex-1992.herokuapp.com/health
           checkstring: "ok"
+          rollbackonhealthcheckfailed: true
