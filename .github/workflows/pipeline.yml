@@ -30,22 +30,19 @@ jobs:
           command: npm run test:e2e
           start: npm run start-prod
           wait-on: http://localhost:5001
-  deploy_to_heroku:
-    needs: [simple_deployment_pipeline]
-    runs-on: ubuntu-20.04
-    if: ${{ github.event_name == 'push' }}
-    steps:
-      - name: Deploy to Heroku
-        uses: AkhileshNS/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "pokedex-1992"
-          heroku_email: ${{secrets.EMAIL}}
-          healthcheck: https://pokedex-1992.herokuapp.com/health
-          checkstring: "ok"
-          rollbackonhealthcheckfailed: true
+      if: ${{ github.event_name == 'push' }}
+        steps:
+          - name: Deploy to Heroku
+            uses: AkhileshNS/heroku-deploy@v3.12.12
+            with:
+              heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+              heroku_app_name: "pokedex-1992"
+              heroku_email: ${{secrets.EMAIL}}
+              healthcheck: https://pokedex-1992.herokuapp.com/health
+              checkstring: "ok"
+              rollbackonhealthcheckfailed: true
   tag_release:
-    needs: [simple_deployment_pipeline, deploy_to_heroku]
+    needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
     steps:
       - name: Bump version and push tag
