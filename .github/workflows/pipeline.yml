@@ -49,14 +49,14 @@ jobs:
           DEFAULT_BUMP: patch
           RELEASE_BRANCHES: main
       - name: Test Success
-      uses: rjstone/discord-webhook-notify@v1
+        uses: rjstone/discord-webhook-notify@v1
         if: success()
         with:
           severity: info
           details: Test Succeeded!
           webhookUrl: ${{secrets.DISCORD_WEBHOOK}}
       - name: Test Failure
-      uses: rjstone/discord-webhook-notify@v1
+        uses: rjstone/discord-webhook-notify@v1
         if: failure()
         with:
           severity: error
