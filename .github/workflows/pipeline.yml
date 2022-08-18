@@ -49,4 +49,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           DEFAULT_BUMP: patch
-          TAG_CONTEXT: branch
+          RELEASE_BRANCHES: main
