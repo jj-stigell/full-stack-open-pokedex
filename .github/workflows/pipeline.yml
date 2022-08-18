@@ -40,6 +40,7 @@ jobs:
           healthcheck: https://pokedex-1992.herokuapp.com/health
           checkstring: "ok"
           rollbackonhealthcheckfailed: true
+      - uses: actions/checkout@v3
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.36.0
         env:
